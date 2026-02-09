@@ -87,8 +87,18 @@
   letter-spacing: 0.5px;
 }
 
+.form-row {
+  display: flex;
+  gap: var(--sp-md);
+}
+
+.form-group-half {
+  flex: 1;
+}
+
 .form-group input[type="text"],
 .form-group input[type="date"],
+.form-group input[type="number"],
 .form-group textarea,
 .form-group select {
   padding: var(--sp-sm) var(--sp-md);

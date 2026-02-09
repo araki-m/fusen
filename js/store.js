@@ -96,6 +96,15 @@ var Store = (function () {
     emit();
   }
 
+  function moveColumn(colId, toIndex) {
+    var order = state.board.columnOrder;
+    var fromIndex = order.indexOf(colId);
+    if (fromIndex === -1) return;
+    order.splice(fromIndex, 1);
+    order.splice(toIndex, 0, colId);
+    emit();
+  }
+
   // --- Note operations ---
 
   function addNote(colId, noteData) {
@@ -109,6 +118,8 @@ var Store = (function () {
       color: noteData.color || defaults.defaultColor || 'yellow',
       priority: noteData.priority || defaults.defaultPriority || 'medium',
       dueDate: noteData.dueDate || '',
+      estimatedTime: noteData.estimatedTime || '',
+      actualTime: noteData.actualTime || '',
       tags: noteData.tags || [],
       createdAt: now,
       updatedAt: now
@@ -224,6 +235,7 @@ var Store = (function () {
     addColumn: addColumn,
     renameColumn: renameColumn,
     deleteColumn: deleteColumn,
+    moveColumn: moveColumn,
     addNote: addNote,
     updateNote: updateNote,
     deleteNote: deleteNote,

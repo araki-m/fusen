@@ -8,6 +8,7 @@ var ColumnView = (function () {
 
     el.innerHTML =
       '<div class="column-header">' +
+        '<span class="column-drag-handle" draggable="true" title="Drag to reorder">&#9776;</span>' +
         '<input class="column-title" type="text" value="' + Util.escapeHtml(col.title) + '" data-action="rename-column" data-col-id="' + col.id + '">' +
         '<span class="column-count">' + noteCount + '</span>' +
         '<div class="column-actions">' +

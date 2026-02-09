@@ -114,6 +114,31 @@
   font-weight: 600;
 }
 
+/* Time display */
+.note-time {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 11px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.note-time-est {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.note-time-act {
+  color: var(--priority-medium);
+  font-weight: 500;
+}
+
+.note-time-sep {
+  color: var(--text-placeholder);
+  margin: 0 1px;
+}
+
 /* Delete button on note */
 .note-delete-btn {
   position: absolute;

@@ -33,6 +33,8 @@ var Modal = (function () {
       color: defaults.defaultColor || 'yellow',
       priority: defaults.defaultPriority || 'medium',
       dueDate: '',
+      estimatedTime: '',
+      actualTime: '',
       tags: []
     });
     overlayEl.classList.add('open');
@@ -94,6 +96,16 @@ var Modal = (function () {
         '<div class="form-group">' +
           '<label for="note-due">Due Date</label>' +
           '<input type="date" id="note-due" value="' + (data.dueDate || '') + '">' +
+        '</div>' +
+        '<div class="form-row">' +
+          '<div class="form-group form-group-half">' +
+            '<label for="note-est-time">Estimated Time (h)</label>' +
+            '<input type="number" id="note-est-time" placeholder="e.g. 2.5" min="0" step="0.25" value="' + (data.estimatedTime || '') + '">' +
+          '</div>' +
+          '<div class="form-group form-group-half">' +
+            '<label for="note-act-time">Actual Time (h)</label>' +
+            '<input type="number" id="note-act-time" placeholder="e.g. 3" min="0" step="0.25" value="' + (data.actualTime || '') + '">' +
+          '</div>' +
         '</div>' +
         '<div class="form-group">' +
           '<label>Tags</label>' +
@@ -183,12 +195,17 @@ var Modal = (function () {
       return;
     }
 
+    var estVal = modalEl.querySelector('#note-est-time').value;
+    var actVal = modalEl.querySelector('#note-act-time').value;
+
     var data = {
       title: title,
       description: modalEl.querySelector('#note-desc').value.trim(),
       color: getSelectedColor(modalEl),
       priority: modalEl.querySelector('#note-priority').value,
       dueDate: modalEl.querySelector('#note-due').value,
+      estimatedTime: estVal !== '' ? parseFloat(estVal) : '',
+      actualTime: actVal !== '' ? parseFloat(actVal) : '',
       tags: getTagsFromChips(modalEl)
     };
 

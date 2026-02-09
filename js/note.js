@@ -41,6 +41,16 @@ var NoteView = (function () {
       descHtml = '<div class="note-desc">' + Util.escapeHtml(note.description) + '</div>';
     }
 
+    var timeHtml = '';
+    var est = Util.formatTime(note.estimatedTime);
+    var act = Util.formatTime(note.actualTime);
+    if (est || act) {
+      var parts = [];
+      if (est) parts.push('<span class="note-time-est" title="Estimated">' + est + '</span>');
+      if (act) parts.push('<span class="note-time-act" title="Actual">' + act + '</span>');
+      timeHtml = '<span class="note-time">' + parts.join('<span class="note-time-sep">/</span>') + '</span>';
+    }
+
     el.innerHTML =
       '<button class="note-delete-btn" data-action="delete-note" data-note-id="' + note.id + '" title="Delete">&times;</button>' +
       '<div class="note-title">' +
@@ -50,6 +60,7 @@ var NoteView = (function () {
       descHtml +
       '<div class="note-footer">' +
         tagsHtml +
+        timeHtml +
         dueDateHtml +
       '</div>';
   }

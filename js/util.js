@@ -60,6 +60,18 @@ var Util = (function () {
     };
   }
 
+  function formatTime(val) {
+    if (!val && val !== 0) return '';
+    var n = parseFloat(val);
+    if (isNaN(n) || n < 0) return '';
+    var h = Math.floor(n);
+    var m = Math.round((n - h) * 60);
+    if (h > 0 && m > 0) return h + 'h' + m + 'm';
+    if (h > 0) return h + 'h';
+    if (m > 0) return m + 'm';
+    return '0m';
+  }
+
   function nowISO() {
     return new Date().toISOString();
   }
@@ -73,6 +85,7 @@ var Util = (function () {
     isDueToday: isDueToday,
     isDueThisWeek: isDueThisWeek,
     debounce: debounce,
+    formatTime: formatTime,
     nowISO: nowISO
   };
 })();

@@ -20,6 +20,22 @@
   border-radius: var(--border-radius);
 }
 
+/* Column being dragged */
+.column.column-dragging {
+  opacity: 0.3;
+}
+
+/* Column drop placeholder */
+.column-drop-placeholder {
+  flex: 0 0 var(--column-width);
+  min-width: var(--column-min-width);
+  border: 2px dashed var(--accent);
+  border-radius: var(--border-radius-lg);
+  background: rgba(92, 107, 192, 0.08);
+  min-height: 120px;
+  pointer-events: none;
+}
+
 /* Ghost drag image enhancement (applied via JS) */
 .note.drag-ghost {
   box-shadow: var(--shadow-note-drag);
