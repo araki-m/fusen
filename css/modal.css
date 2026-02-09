@@ -1,0 +1,243 @@
+/* Overlay */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-normal), visibility var(--transition-normal);
+}
+
+.modal-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Modal box */
+.modal {
+  background: #fff;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-modal);
+  width: 480px;
+  max-width: 92vw;
+  max-height: 85vh;
+  overflow-y: auto;
+  transform: translateY(20px) scale(0.97);
+  transition: transform var(--transition-normal);
+}
+
+.modal-overlay.open .modal {
+  transform: translateY(0) scale(1);
+}
+
+/* Modal header */
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--sp-lg) var(--sp-xl);
+  border-bottom: 1px solid #eee;
+}
+
+.modal-header h2 {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.modal-close-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 20px;
+  color: var(--text-secondary);
+  transition: background var(--transition-fast);
+}
+
+.modal-close-btn:hover {
+  background: #f0f0f0;
+}
+
+/* Modal body */
+.modal-body {
+  padding: var(--sp-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-lg);
+}
+
+/* Form group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-xs);
+}
+
+.form-group label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group textarea,
+.form-group select {
+  padding: var(--sp-sm) var(--sp-md);
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  background: #fafafa;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(92, 107, 192, 0.15);
+  background: #fff;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Color picker */
+.color-picker {
+  display: flex;
+  gap: var(--sp-sm);
+  flex-wrap: wrap;
+}
+
+.color-swatch {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  cursor: pointer;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.color-swatch:hover {
+  transform: scale(1.15);
+}
+
+.color-swatch.selected {
+  border-color: var(--accent);
+  transform: scale(1.1);
+}
+
+.color-swatch[data-color="yellow"]  { background: var(--note-yellow); }
+.color-swatch[data-color="pink"]    { background: var(--note-pink); }
+.color-swatch[data-color="blue"]    { background: var(--note-blue); }
+.color-swatch[data-color="green"]   { background: var(--note-green); }
+.color-swatch[data-color="orange"]  { background: var(--note-orange); }
+.color-swatch[data-color="purple"]  { background: var(--note-purple); }
+.color-swatch[data-color="mint"]    { background: var(--note-mint); }
+.color-swatch[data-color="peach"]   { background: var(--note-peach); }
+
+/* Tags input */
+.tags-input-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-xs);
+  padding: var(--sp-sm);
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  background: #fafafa;
+  cursor: text;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.tags-input-wrap:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(92, 107, 192, 0.15);
+  background: #fff;
+}
+
+.tags-input-wrap .tag-chip {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px 8px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.tags-input-wrap .tag-chip button {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  line-height: 1;
+  margin-left: 2px;
+}
+
+.tags-input-wrap .tag-chip button:hover {
+  color: #fff;
+}
+
+.tags-input-wrap input {
+  flex: 1;
+  min-width: 80px;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 13px;
+  padding: 2px;
+}
+
+/* Modal footer */
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--sp-sm);
+  padding: var(--sp-lg) var(--sp-xl);
+  border-top: 1px solid #eee;
+}
+
+.btn {
+  padding: var(--sp-sm) var(--sp-lg);
+  border-radius: var(--border-radius);
+  font-size: 14px;
+  font-weight: 500;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+}
+
+.btn-secondary {
+  background: #eee;
+  color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+  background: #ddd;
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: #fff;
+}
+
+.btn-danger:hover {
+  background: var(--danger-hover);
+}

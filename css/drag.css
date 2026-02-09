@@ -1,0 +1,28 @@
+/* Note being dragged */
+.note.dragging {
+  opacity: 0.4;
+  transform: rotate(0deg) !important;
+}
+
+/* Drop placeholder */
+.drop-placeholder {
+  border: 2px dashed var(--accent);
+  border-radius: var(--border-radius);
+  background: rgba(92, 107, 192, 0.08);
+  min-height: 60px;
+  transition: min-height var(--transition-fast);
+  pointer-events: none;
+}
+
+/* Column drag-over state */
+.note-list.drag-over {
+  background: rgba(92, 107, 192, 0.04);
+  border-radius: var(--border-radius);
+}
+
+/* Ghost drag image enhancement (applied via JS) */
+.note.drag-ghost {
+  box-shadow: var(--shadow-note-drag);
+  transform: rotate(3deg) !important;
+  opacity: 0.9;
+}

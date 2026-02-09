@@ -1,0 +1,67 @@
+:root {
+  /* Note colors */
+  --note-yellow: #fff9c4;
+  --note-pink: #f8bbd0;
+  --note-blue: #bbdefb;
+  --note-green: #c8e6c9;
+  --note-orange: #ffe0b2;
+  --note-purple: #e1bee7;
+  --note-mint: #b2dfdb;
+  --note-peach: #ffccbc;
+
+  /* Note border accents (slightly darker) */
+  --note-yellow-border: #f9e588;
+  --note-pink-border: #f48fb1;
+  --note-blue-border: #90caf9;
+  --note-green-border: #a5d6a7;
+  --note-orange-border: #ffcc80;
+  --note-purple-border: #ce93d8;
+  --note-mint-border: #80cbc4;
+  --note-peach-border: #ffab91;
+
+  /* Priority colors */
+  --priority-high: #e53935;
+  --priority-medium: #fb8c00;
+  --priority-low: #43a047;
+
+  /* UI colors */
+  --bg-body: #f0ebe3;
+  --bg-toolbar: #ffffff;
+  --bg-column: #e8e2d9;
+  --bg-column-header: #ddd6cc;
+  --text-primary: #333333;
+  --text-secondary: #777777;
+  --text-placeholder: #aaaaaa;
+  --border-light: #d5cec4;
+  --accent: #5c6bc0;
+  --accent-hover: #3f51b5;
+  --danger: #e53935;
+  --danger-hover: #c62828;
+
+  /* Shadows */
+  --shadow-note: 2px 2px 6px rgba(0, 0, 0, 0.12);
+  --shadow-note-hover: 3px 3px 10px rgba(0, 0, 0, 0.18);
+  --shadow-note-drag: 5px 5px 20px rgba(0, 0, 0, 0.25);
+  --shadow-modal: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --shadow-toolbar: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  /* Spacing */
+  --sp-xs: 4px;
+  --sp-sm: 8px;
+  --sp-md: 12px;
+  --sp-lg: 16px;
+  --sp-xl: 24px;
+  --sp-xxl: 32px;
+
+  /* Sizing */
+  --toolbar-height: 56px;
+  --column-width: 300px;
+  --column-min-width: 260px;
+  --note-min-height: 80px;
+  --border-radius: 4px;
+  --border-radius-lg: 8px;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+}

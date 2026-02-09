@@ -1,0 +1,146 @@
+/* Note card */
+.note {
+  position: relative;
+  padding: var(--sp-md);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-note);
+  cursor: pointer;
+  transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+  min-height: var(--note-min-height);
+  border-left: 4px solid transparent;
+  user-select: none;
+}
+
+.note:hover {
+  box-shadow: var(--shadow-note-hover);
+  transform: translateY(-1px);
+}
+
+/* Paper-like subtle tilt per card */
+.note:nth-child(3n+1) { transform: rotate(-0.5deg); }
+.note:nth-child(3n+2) { transform: rotate(0.3deg); }
+.note:nth-child(3n)   { transform: rotate(-0.2deg); }
+.note:nth-child(3n+1):hover { transform: rotate(-0.5deg) translateY(-1px); }
+.note:nth-child(3n+2):hover { transform: rotate(0.3deg) translateY(-1px); }
+.note:nth-child(3n):hover   { transform: rotate(-0.2deg) translateY(-1px); }
+
+/* Note colors */
+.note[data-color="yellow"]  { background: var(--note-yellow);  border-left-color: var(--note-yellow-border); }
+.note[data-color="pink"]    { background: var(--note-pink);    border-left-color: var(--note-pink-border); }
+.note[data-color="blue"]    { background: var(--note-blue);    border-left-color: var(--note-blue-border); }
+.note[data-color="green"]   { background: var(--note-green);   border-left-color: var(--note-green-border); }
+.note[data-color="orange"]  { background: var(--note-orange);  border-left-color: var(--note-orange-border); }
+.note[data-color="purple"]  { background: var(--note-purple);  border-left-color: var(--note-purple-border); }
+.note[data-color="mint"]    { background: var(--note-mint);    border-left-color: var(--note-mint-border); }
+.note[data-color="peach"]   { background: var(--note-peach);   border-left-color: var(--note-peach-border); }
+
+/* Priority indicator */
+.note[data-priority="high"]   .note-priority-dot { background: var(--priority-high); }
+.note[data-priority="medium"] .note-priority-dot { background: var(--priority-medium); }
+.note[data-priority="low"]    .note-priority-dot { background: var(--priority-low); }
+
+.note-priority-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* Note title */
+.note-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: var(--sp-xs);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  word-break: break-word;
+}
+
+/* Note description */
+.note-desc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
+  margin-bottom: var(--sp-sm);
+}
+
+/* Note footer */
+.note-footer {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  flex-wrap: wrap;
+  font-size: 11px;
+}
+
+/* Tags */
+.note-tags {
+  display: flex;
+  gap: var(--sp-xs);
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.note-tag {
+  padding: 1px 6px;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.08);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+/* Due date */
+.note-due {
+  font-size: 11px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.note-due.overdue {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.note-due.due-today {
+  color: var(--priority-medium);
+  font-weight: 600;
+}
+
+/* Delete button on note */
+.note-delete-btn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 14px;
+  color: var(--text-secondary);
+  opacity: 0;
+  transition: opacity var(--transition-fast), background var(--transition-fast);
+}
+
+.note:hover .note-delete-btn {
+  opacity: 1;
+}
+
+.note-delete-btn:hover {
+  background: rgba(229, 57, 53, 0.15);
+  color: var(--danger);
+}
+
+/* Hidden notes (filtered out) */
+.note.hidden {
+  display: none;
+}
