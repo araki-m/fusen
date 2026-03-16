@@ -42,9 +42,171 @@
 }
 
 #calendar-view.active,
+#tasklist-view.active,
 #analytics-view.active {
   display: block;
   padding: var(--sp-xl);
+}
+
+/* ===== TASK LIST ===== */
+.tl-toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-lg);
+  margin-bottom: var(--sp-lg);
+  flex-wrap: wrap;
+}
+
+.tl-count {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.tl-sort-group {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-xs);
+}
+
+.tl-sort-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.tl-sort-btn {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-light);
+  background: #fff;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.tl-sort-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.tl-sort-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.tl-empty {
+  text-align: center;
+  color: var(--text-secondary);
+  padding: var(--sp-xxl);
+  font-size: 14px;
+}
+
+.tl-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-toolbar);
+  font-size: 13px;
+}
+
+.tl-table thead tr {
+  background: var(--bg-column-header);
+}
+
+.tl-table th {
+  padding: var(--sp-sm) var(--sp-md);
+  text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-light);
+  white-space: nowrap;
+}
+
+.tl-th-priority { width: 44px; text-align: center; }
+.tl-th-due      { width: 90px; }
+.tl-th-time     { width: 64px; text-align: right; }
+.tl-th-column   { width: 120px; }
+.tl-th-tags     { width: 160px; }
+
+.tl-table td {
+  padding: var(--sp-sm) var(--sp-md);
+  border-bottom: 1px solid var(--border-light);
+  vertical-align: middle;
+}
+
+.tl-table tbody tr:last-child td { border-bottom: none; }
+
+.tl-row {
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.tl-row:hover { background: #f5f4f2; }
+
+.tl-td-priority { text-align: center; }
+
+.tl-priority-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.tl-priority-high   { background: var(--priority-high); }
+.tl-priority-medium { background: var(--priority-medium); }
+.tl-priority-low    { background: var(--priority-low); }
+
+.tl-td-title {
+  font-weight: 500;
+  color: var(--text-primary);
+  max-width: 320px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tl-td-column {
+  color: var(--text-secondary);
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tl-td-due {
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.tl-overdue   { color: var(--priority-high); font-weight: 600; }
+.tl-due-today { color: var(--priority-medium); font-weight: 600; }
+
+.tl-td-time {
+  text-align: right;
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.tl-td-tags {
+  max-width: 160px;
+}
+
+.tl-tag {
+  display: inline-block;
+  font-size: 11px;
+  padding: 1px 6px;
+  border-radius: 10px;
+  background: rgba(92, 107, 192, 0.12);
+  color: var(--accent);
+  margin: 1px 2px 1px 0;
+  white-space: nowrap;
 }
 
 /* ===== CALENDAR ===== */
