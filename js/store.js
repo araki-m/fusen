@@ -120,6 +120,7 @@ var Store = (function () {
       dueDate: noteData.dueDate || '',
       estimatedTime: noteData.estimatedTime || '',
       actualTime: noteData.actualTime || '',
+      completedDate: noteData.completedDate || '',
       tags: noteData.tags || [],
       createdAt: now,
       updatedAt: now

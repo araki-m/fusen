@@ -187,6 +187,17 @@
 .tl-overdue   { color: var(--priority-high); font-weight: 600; }
 .tl-due-today { color: var(--priority-medium); font-weight: 600; }
 
+.tl-row-completed .tl-td-title {
+  color: var(--text-secondary);
+  text-decoration: line-through;
+}
+
+.tl-td-completed {
+  color: var(--priority-low);
+  white-space: nowrap;
+  font-weight: 500;
+}
+
 .tl-td-time {
   text-align: right;
   color: var(--text-secondary);

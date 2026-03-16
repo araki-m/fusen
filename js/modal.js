@@ -93,9 +93,15 @@ var Modal = (function () {
             }).join('') +
           '</select>' +
         '</div>' +
-        '<div class="form-group">' +
-          '<label for="note-due">Due Date</label>' +
-          '<input type="date" id="note-due" value="' + (data.dueDate || '') + '">' +
+        '<div class="form-row">' +
+          '<div class="form-group form-group-half">' +
+            '<label for="note-due">期限日</label>' +
+            '<input type="date" id="note-due" value="' + (data.dueDate || '') + '">' +
+          '</div>' +
+          '<div class="form-group form-group-half">' +
+            '<label for="note-completed-date">完了日</label>' +
+            '<input type="date" id="note-completed-date" value="' + (data.completedDate || '') + '">' +
+          '</div>' +
         '</div>' +
         '<div class="form-row">' +
           '<div class="form-group form-group-half">' +
@@ -204,6 +210,7 @@ var Modal = (function () {
       color: getSelectedColor(modalEl),
       priority: modalEl.querySelector('#note-priority').value,
       dueDate: modalEl.querySelector('#note-due').value,
+      completedDate: modalEl.querySelector('#note-completed-date').value,
       estimatedTime: estVal !== '' ? parseFloat(estVal) : '',
       actualTime: actVal !== '' ? parseFloat(actVal) : '',
       tags: getTagsFromChips(modalEl)

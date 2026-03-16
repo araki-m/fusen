@@ -42,6 +42,7 @@ var Board = (function () {
     col.noteOrder.forEach(function (noteId) {
       var note = board.notes[noteId];
       if (!note) return;
+      if (note.completedDate) return;
       if (filterState && !matchesFilter(note, filterState)) return;
       notes.push(note);
     });

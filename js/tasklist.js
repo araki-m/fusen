@@ -84,6 +84,7 @@ var TaskList = (function () {
       '<th class="tl-th-title">タスク名</th>' +
       '<th class="tl-th-column">カラム</th>' +
       '<th class="tl-th-due">期限</th>' +
+      '<th class="tl-th-due">完了日</th>' +
       '<th class="tl-th-time">予定</th>' +
       '<th class="tl-th-time">実績</th>' +
       '<th class="tl-th-tags">タグ</th>' +
@@ -109,11 +110,15 @@ var TaskList = (function () {
         return '<span class="tl-tag">' + Util.escapeHtml(t) + '</span>';
       }).join('');
 
-      html += '<tr class="tl-row" data-note-id="' + note.id + '">' +
+      var completedStr = note.completedDate ? Util.formatDate(note.completedDate) : '';
+      var rowCls = 'tl-row' + (note.completedDate ? ' tl-row-completed' : '');
+
+      html += '<tr class="' + rowCls + '" data-note-id="' + note.id + '">' +
         '<td class="tl-td-priority"><span class="tl-priority-dot tl-priority-' + priority + '" title="' + (PRIORITY_LABEL[priority] || '') + '"></span></td>' +
         '<td class="tl-td-title">' + Util.escapeHtml(note.title) + '</td>' +
         '<td class="tl-td-column">' + Util.escapeHtml(item.col.colTitle) + '</td>' +
         '<td class="tl-td-due' + (dueCls ? ' ' + dueCls : '') + '">' + dueStr + '</td>' +
+        '<td class="tl-td-completed">' + completedStr + '</td>' +
         '<td class="tl-td-time">' + (Util.formatTime(note.estimatedTime) || '-') + '</td>' +
         '<td class="tl-td-time">' + (Util.formatTime(note.actualTime)    || '-') + '</td>' +
         '<td class="tl-td-tags">' + tagsHtml + '</td>' +

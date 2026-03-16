@@ -50,7 +50,7 @@ var Calendar = (function () {
       if (!notesByDate[note.dueDate]) notesByDate[note.dueDate] = [];
       notesByDate[note.dueDate].push({
         note: note,
-        done: !!doneColIds[noteColMap[noteId]]
+        done: !!note.completedDate || !!doneColIds[noteColMap[noteId]]
       });
     });
 
