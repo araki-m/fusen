@@ -5,10 +5,9 @@
   height: 100vh;
 }
 
-/* Board */
+/* Board (display is controlled by .tab-view / .tab-view.active in tabs.css) */
 #board {
   flex: 1;
-  display: flex;
   gap: var(--sp-lg);
   padding: var(--sp-lg);
   overflow-x: auto;
@@ -20,7 +19,7 @@
 .column {
   flex: 0 0 var(--column-width);
   min-width: var(--column-min-width);
-  max-height: calc(100vh - var(--toolbar-height) - var(--sp-xxl));
+  max-height: calc(100vh - var(--toolbar-height) - var(--tabnav-height) - var(--sp-xxl));
   display: flex;
   flex-direction: column;
   background: var(--bg-column);

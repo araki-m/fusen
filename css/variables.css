@@ -55,6 +55,7 @@
 
   /* Sizing */
   --toolbar-height: 56px;
+  --tabnav-height: 41px;
   --column-width: 300px;
   --column-min-width: 260px;
   --note-min-height: 80px;

@@ -1,6 +1,32 @@
 var App = (function () {
   'use strict';
 
+  var currentTab = 'board';
+
+  function switchTab(tabName) {
+    currentTab = tabName;
+
+    // Update tab buttons
+    document.querySelectorAll('.tab-btn').forEach(function (btn) {
+      btn.classList.toggle('active', btn.dataset.tab === tabName);
+    });
+
+    // Update views
+    document.getElementById('board').classList.toggle('active', tabName === 'board');
+    document.getElementById('calendar-view').classList.toggle('active', tabName === 'calendar');
+    document.getElementById('analytics-view').classList.toggle('active', tabName === 'analytics');
+
+    // Show/hide toolbar filters (only relevant on board tab)
+    var filterArea = document.querySelector('.search-box');
+    var filterGroup = document.querySelector('.filter-group');
+    var showFilters = tabName === 'board';
+    if (filterArea)  filterArea.style.display  = showFilters ? '' : 'none';
+    if (filterGroup) filterGroup.style.display = showFilters ? '' : 'none';
+
+    if (tabName === 'calendar')  Calendar.render();
+    if (tabName === 'analytics') Analytics.render();
+  }
+
   function init() {
     // Load state
     Store.load();
@@ -21,10 +47,22 @@ var App = (function () {
     // Init import/export
     IO.init();
 
+    // Init calendar & analytics
+    Calendar.init();
+    Analytics.init();
+
+    // Tab switching
+    document.querySelector('.tab-nav').addEventListener('click', function (e) {
+      var btn = e.target.closest('.tab-btn');
+      if (btn && btn.dataset.tab) switchTab(btn.dataset.tab);
+    });
+
     // Listen for state changes
     document.addEventListener('fusen:state-changed', function () {
       Filter.updateTagOptions();
       Board.render();
+      if (currentTab === 'calendar')  Calendar.render();
+      if (currentTab === 'analytics') Analytics.render();
     });
 
     // Delegate board clicks

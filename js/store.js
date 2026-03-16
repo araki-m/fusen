@@ -201,6 +201,27 @@ var Store = (function () {
     return JSON.stringify(state, null, 2);
   }
 
+  function repairOrphans() {
+    // カラムの noteOrder に含まれないノートを notes マップから削除する
+    var referenced = {};
+    state.board.columnOrder.forEach(function (colId) {
+      var col = state.board.columns[colId];
+      if (col && col.noteOrder) {
+        col.noteOrder.forEach(function (noteId) { referenced[noteId] = true; });
+      }
+    });
+    var removed = 0;
+    Object.keys(state.board.notes).forEach(function (noteId) {
+      if (!referenced[noteId]) {
+        delete state.board.notes[noteId];
+        removed++;
+      }
+    });
+    if (removed > 0) {
+      console.info('repairOrphans: removed ' + removed + ' orphaned note(s).');
+    }
+  }
+
   function importJSON(jsonStr) {
     try {
       var parsed = JSON.parse(jsonStr);
@@ -214,6 +235,7 @@ var Store = (function () {
       if (!state.board.tags) {
         state.board.tags = [];
       }
+      repairOrphans();
       syncTags();
       emit();
       return true;
