@@ -16,6 +16,7 @@ var App = (function () {
     document.getElementById('calendar-view').classList.toggle('active', tabName === 'calendar');
     document.getElementById('tasklist-view').classList.toggle('active', tabName === 'tasklist');
     document.getElementById('analytics-view').classList.toggle('active', tabName === 'analytics');
+    document.getElementById('settings-view').classList.toggle('active', tabName === 'settings');
 
     // Show/hide toolbar filters (only relevant on board tab)
     var filterArea = document.querySelector('.search-box');
@@ -27,6 +28,7 @@ var App = (function () {
     if (tabName === 'calendar')  Calendar.render();
     if (tabName === 'tasklist')  TaskList.render();
     if (tabName === 'analytics') Analytics.render();
+    if (tabName === 'settings')  Settings.render();
   }
 
   function init() {
@@ -49,10 +51,11 @@ var App = (function () {
     // Init import/export
     IO.init();
 
-    // Init calendar, task list & analytics
+    // Init calendar, task list, analytics & settings
     Calendar.init();
     TaskList.init();
     Analytics.init();
+    Settings.init();
 
     // Tab switching
     document.querySelector('.tab-nav').addEventListener('click', function (e) {

@@ -5,6 +5,7 @@ var Store = (function () {
   var state = null;
 
   function defaultState() {
+    var colId0 = Util.generateId('col');
     var colId1 = Util.generateId('col');
     var colId2 = Util.generateId('col');
     var colId3 = Util.generateId('col');
@@ -12,8 +13,9 @@ var Store = (function () {
       version: 1,
       board: {
         title: 'My Board',
-        columnOrder: [colId1, colId2, colId3],
+        columnOrder: [colId0, colId1, colId2, colId3],
         columns: {
+          [colId0]: { id: colId0, title: 'Back Log', noteOrder: [] },
           [colId1]: { id: colId1, title: 'To Do', noteOrder: [] },
           [colId2]: { id: colId2, title: 'In Progress', noteOrder: [] },
           [colId3]: { id: colId3, title: 'Done', noteOrder: [] }
